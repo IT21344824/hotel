@@ -16,7 +16,7 @@ export default function Home() {
           <Button variant="secondary">Learn More</Button>
         </div>
       </Hero>
-      <Features/>
+      <Features />
     </main>
   );
 }
