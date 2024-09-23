@@ -83,8 +83,14 @@ const Hero = () => {
           <h1 className="text-white text-4xl sm:text-6xl font-extrabold mb-4">
             Luxury Hotels
           </h1>
-          <p className="text-white sm:text-base font-extrabold mb-5">"Welcome to Luxury Hotels" invites  you to experience exceptional elegance,<br /> comfort, and personalized service.
-            From stunning rooms to world-class amenities,<br /> every detail is crafted for a truly indulgent and memorable stay.</p>
+          <p className="text-white sm:text-base font-extrabold mb-5">
+            Welcome to Luxury Hotels invites you to experience exceptional
+            elegance,
+            <br /> comfort, and personalized service. From stunning rooms to
+            world-class amenities,
+            <br /> every detail is crafted for a truly indulgent and memorable
+            stay.
+          </p>
           <Link href="/visit-now">
             <Button className="bg-amber-300 hover:bg-amber-500 text-white px-6 py-3 rounded-sm w-48 h-12 ">
               Visit Now

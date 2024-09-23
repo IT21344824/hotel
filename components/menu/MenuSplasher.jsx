@@ -1,10 +1,10 @@
 import React from "react";
 import { menuHeroConfig } from "@/config/compHeroConfig";
-
-const Menuplash = () => {
+import Image from 'next/image';
+const Menuplasher = () => {
     return (
         <div className="relative  w-full">
-            <img
+            <Image
                 src={menuHeroConfig.src}
                 className="h-80 w-full object-cover"
                 alt="Homepage"
@@ -26,4 +26,4 @@ const Menuplash = () => {
     );
 };
 
-export default Menuplash;
+export default Menuplasher;

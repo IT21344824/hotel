@@ -1,10 +1,10 @@
 import React from "react";
 import { teamHeroConfig } from "@/config/compHeroConfig";
-
-const TeamSplash = () => {
+import Image from 'next/image';
+const TeamSplasher = () => {
     return (
         <div className="relative  w-full">
-            <img
+            <Image
                 src={teamHeroConfig.src}
                 className="h-80 w-full object-cover"
                 alt="Homepage"
@@ -26,4 +26,4 @@ const TeamSplash = () => {
     );
 };
 
-export default TeamSplash;
+export default TeamSplasher;
