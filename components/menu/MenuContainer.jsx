@@ -32,8 +32,8 @@ const MenuContainer = () => {
                             <Image 
                                 src={menuIcon.Breakfast.icon} 
                                 alt={menuIcon.Breakfast.name} 
-                                width={56} 
-                                height={56} 
+                                width={84} 
+                                height={84} 
                                 className='h-14 w-14' 
                             />
                             <div>
