@@ -19,19 +19,9 @@ const navbarConfig = {
     href: "/restaurant",
     label: "Restaurant",
   },
-  team: {
-    href: "/pages",
-    label: "Pages",
-    subItems: [
-      {
-        href: "/pages/team_members",
-        label: "Our team",
-      },
-      {
-        href: "/pages/menu",
-        label: "Menu",
-      },
-    ],
+  aboutus: {
+    href: "/aboutus",
+    label: "About us",
   },
 };
 
