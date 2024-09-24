@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image'; // Import Next.js Image component
 import { menuIcon } from "@/config/iconConfig";
 import { menu_Dummy_1 } from "@/components/dummy/menu_Dummy";
+import Link from 'next/link';
 
 const MenuContainer = () => {
     const [activeTab, setActiveTab] = useState("breakfast");
@@ -29,12 +30,12 @@ const MenuContainer = () => {
                             className={`flex items-center justify-center gap-3 cursor-pointer border-b-4 ${activeTab === 'breakfast' ? 'border-orange-500' : 'border-transparent'}`}
                             onClick={() => handleTabClick('breakfast')}
                         >
-                            <Image 
-                                src={menuIcon.Breakfast.icon} 
-                                alt={menuIcon.Breakfast.name} 
-                                width={84} 
-                                height={84} 
-                                className='h-14 w-14' 
+                            <Image
+                                src={menuIcon.Breakfast.icon}
+                                alt={menuIcon.Breakfast.name}
+                                width={84}
+                                height={84}
+                                className='h-14 w-14'
                             />
                             <div>
                                 <p>Popular</p>
@@ -46,12 +47,12 @@ const MenuContainer = () => {
                             className={`flex items-center justify-center gap-3 cursor-pointer border-b-4 ${activeTab === 'lunch' ? 'border-orange-500' : 'border-transparent'}`}
                             onClick={() => handleTabClick('lunch')}
                         >
-                            <Image 
-                                src={menuIcon.Lunch.icon} 
-                                alt={menuIcon.Lunch.name} 
-                                width={56} 
-                                height={56} 
-                                className='h-14 w-14' 
+                            <Image
+                                src={menuIcon.Lunch.icon}
+                                alt={menuIcon.Lunch.name}
+                                width={56}
+                                height={56}
+                                className='h-14 w-14'
                             />
                             <div>
                                 <p>Special</p>
@@ -63,12 +64,12 @@ const MenuContainer = () => {
                             className={`flex items-center justify-center gap-3 cursor-pointer border-b-4 ${activeTab === 'dinner' ? 'border-orange-500' : 'border-transparent'}`}
                             onClick={() => handleTabClick('dinner')}
                         >
-                            <Image 
-                                src={menuIcon.Dinner.icon} 
-                                alt={menuIcon.Dinner.name} 
-                                width={56} 
-                                height={56} 
-                                className='h-14 w-14' 
+                            <Image
+                                src={menuIcon.Dinner.icon}
+                                alt={menuIcon.Dinner.name}
+                                width={56}
+                                height={56}
+                                className='h-14 w-14'
                             />
                             <div>
                                 <p>Lovely</p>
@@ -80,15 +81,26 @@ const MenuContainer = () => {
                     <div className='flex flex-wrap items-center justify-center gap-10 mt-10'>
                         {menu_Dummy_1.map(item => (
                             <div key={item.id} className=''>
-                                <div
-                                    style={{ '--image-url': `url(${item.img})` }}
-                                    className='h-60 w-60 bg-[image:var(--image-url)] bg-cover bg-center rounded-lg'
-                                >
-                                    <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 rounded-lg">
-                                        <p className="text-2xl text-white">{item.name}</p>
-                                        <p className="text-sm text-orange-300">LKR : {item.price}</p>
+                                <Link href={{
+                                    pathname: `/restaurant/${item.id}`,
+                                    query: {
+                                        name: item.name,
+                                        price: item.price,
+                                        img: item.img,
+                                        description: item.description
+                                    }
+                                }}>
+
+                                    <div
+                                        style={{ '--image-url': `url(${item.img})` }}
+                                        className='h-60 w-60 bg-[image:var(--image-url)] bg-cover bg-center rounded-lg'
+                                    >
+                                        <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 rounded-lg">
+                                            <p className="text-2xl text-white">{item.name}</p>
+                                            <p className="text-sm text-orange-300">LKR : {item.price}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         ))}
                     </div>

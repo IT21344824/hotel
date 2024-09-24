@@ -5,7 +5,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Burger",
         img: "/images/menu/buger-1.png",
         price: 200,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -13,7 +13,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Hamburger",
         img: "/images/menu/buger-2.png",
         price: 300,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -21,7 +21,7 @@ export const menu_Dummy_1 = [
         name: "chicken fried rice",
         img: "/images/menu/rice-1.png",
         price: 400,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -29,7 +29,7 @@ export const menu_Dummy_1 = [
         name: "MIX fried rice",
         img: "/images/menu/rice-2.jpg",
         price: 500,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -37,7 +37,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Burger",
         img: "/images/menu/buger-1.png",
         price: 200,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -45,7 +45,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Hamburger",
         img: "/images/menu/buger-2.png",
         price: 300,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -53,7 +53,7 @@ export const menu_Dummy_1 = [
         name: "chicken fried rice",
         img: "/images/menu/rice-1.png",
         price: 400,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -61,7 +61,7 @@ export const menu_Dummy_1 = [
         name: "MIX fried rice",
         img: "/images/menu/rice-2.jpg",
         price: 500,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -69,7 +69,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Burger",
         img: "/images/menu/buger-1.png",
         price: 200,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -77,7 +77,7 @@ export const menu_Dummy_1 = [
         name: "Chicken Hamburger",
         img: "/images/menu/buger-2.png",
         price: 300,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -85,7 +85,7 @@ export const menu_Dummy_1 = [
         name: "chicken fried rice",
         img: "/images/menu/rice-1.png",
         price: 400,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
     {
@@ -93,7 +93,7 @@ export const menu_Dummy_1 = [
         name: "MIX fried rice",
         img: "/images/menu/rice-2.jpg",
         price: 500,
-        designation: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
+        description: "psum ipsum clita erat amet dolor justo diamchicken patty, grilled or fried, served in a bun. ",
 
     },
 
