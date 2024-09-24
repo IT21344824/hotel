@@ -20,13 +20,6 @@ const BanquetSplasher = () => {
 
       {/* Text at the bottom */}
       <div className="absolute flex flex-col top-20 text-white p-6 w-full items-center justify-center">
-        <p className=" text-2xl font-bold uppercase">
-          {banquetHeroConfig.navigation.map((part, index) => (
-            <span key={index} className={part.color}>
-              {part.text}
-            </span>
-          ))}
-        </p>
 
         <div className="text-center flex items-center justify-between gap-96 mt-20 ">
           <div className="text-2xl font-bold mb-4 flex-1 ">

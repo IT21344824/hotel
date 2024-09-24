@@ -18,7 +18,7 @@ const OurServices = () => {
 
             <div className='mt-10 w-full'>
                 <div className='flex flex-wrap items-center justify-center gap-20'>
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden  flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_1.img}
                             alt={OurServicesImages.O_1.name}
@@ -26,15 +26,15 @@ const OurServices = () => {
                             height={200}
                             className="w-24 h-24 aspect-square object-cover rounded-full"
                         />
-                        <div className='ml-4 pr-4'>
+                        <div className='ml-4 pr-4 '>
                             <h className='text-lg font-bold' style={{ color: '#4C1711' }}>Venues</h>
-                            <p className='text-sm' style={{ color: '#4C1711' }}>
+                            <p className='text-sm ' style={{ color: '#4C1711' }}>
                                 Lawans/Farmhouse, Banquet Hall, Resorts, Small Function Hall, Destination Wedding, Hotels
                             </p>
                         </div>
                     </div>
 
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_2.img}
                             alt={OurServicesImages.O_2.name}
@@ -54,7 +54,7 @@ const OurServices = () => {
 
 
                 <div className='flex flex-wrap items-center justify-center gap-20 mt-10'>
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_3.img}
                             alt={OurServicesImages.O_3.name}
@@ -70,7 +70,7 @@ const OurServices = () => {
                         </div>
                     </div>
 
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_4.img}
                             alt={OurServicesImages.O_4.name}
@@ -88,7 +88,7 @@ const OurServices = () => {
                 </div>
 
                 <div className='flex flex-wrap items-center justify-center gap-20 mt-10'>
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_5.img}
                             alt={OurServicesImages.O_5.name}
@@ -104,7 +104,7 @@ const OurServices = () => {
                         </div>
                     </div>
 
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_6.img}
                             alt={OurServicesImages.O_6.name}
@@ -122,7 +122,7 @@ const OurServices = () => {
                 </div>
 
                 <div className='flex flex-wrap items-center justify-center gap-20 mt-10'>
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4  h-[130px]'>
                         <Image
                             src={OurServicesImages.O_7.img}
                             alt={OurServicesImages.O_7.name}
@@ -137,7 +137,7 @@ const OurServices = () => {
                         </div>
                     </div>
 
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-[130px]'>
                         <Image
                             src={OurServicesImages.O_8.img}
                             alt={OurServicesImages.O_8.name}
@@ -155,7 +155,7 @@ const OurServices = () => {
                 </div>
 
                 <div className='flex items-center justify-center mt-10'>
-                    <div className='flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                    <div className='text-ellipsis overflow-hidden flex shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] rounded-md px-3 py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
                         <Image
                             src={OurServicesImages.O_9.img}
                             alt={OurServicesImages.O_9.name}
