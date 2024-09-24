@@ -13,9 +13,9 @@ const fontSans = FontSans({
 });
 
 export const metadata = {
-  title: "Shadcn Boilerplate",
+  title: "Luxury Hotel",
   description:
-    "Responsive Shadcn starter template with Next.js 14, App Router, Dark Mode, React Icons, Navbar and Footer, and all Shadcn components installed.",
+    "Luxury Hotel demo",
 };
 
 export default function RootLayout({ children }) {
