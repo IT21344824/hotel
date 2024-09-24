@@ -2,7 +2,7 @@ import React from "react";
 import MenuSplaher from "../../components/menu/MenuSplasher";
 import MenuContainer from "../../components/menu/MenuContainer";
 
-const page = () => {
+const restaurantPG = () => {
   return (
     <div>
       <MenuSplaher />
@@ -11,4 +11,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default restaurantPG;
