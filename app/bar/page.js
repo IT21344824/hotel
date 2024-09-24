@@ -21,14 +21,14 @@ const BarPage = () => {
       <div className="max-w-4xl mx-auto py-16 px-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">About Lobby Bar</h2>
         <p className="text-gray-700 text-lg leading-relaxed mb-6">
-          Welcome to the Lobby Bar, where classic charm meets modern sophistication. Whether you're looking to relax with a cocktail 
+          Welcome to the Lobby Bar, where classic charm meets modern sophistication. Whether you&apos;re looking to relax with a cocktail 
           or enjoy a lively evening with friends, our bar offers the perfect ambiance. With an extensive selection of beverages, 
           including fine wines, creative cocktails, and premium spirits, we cater to every taste. The Lobby Bar is the ideal place 
           to unwind after a long day or celebrate a special occasion.
         </p>
         <p className="text-gray-700 text-lg leading-relaxed">
           Indulge in our delicious range of light bites, expertly crafted to complement your drink. Our comfortable seating and 
-          intimate atmosphere ensure a memorable experience, whether you're visiting for a casual drink or a lively night out.
+          intimate atmosphere ensure a memorable experience, whether you&apos;re visiting for a casual drink or a lively night out.
         </p>
       </div>
 
