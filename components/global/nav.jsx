@@ -93,7 +93,7 @@ export default function Nav() {
       ) : (
         /* Different Navbar shown when at the top */
         <header
-          className="absolute top-0 left-0 w-full z-30 flex h-16 items-center justify-around px-4 lg:px-6 bg-gray-50 opacity-60 text-black transition-all duration-300 ease-in-out"
+          className="absolute top-0 left-0 w-full z-30 flex h-16 items-center justify-around px-4 lg:px-6 bg-white  text-black transition-all duration-300 ease-in-out"
         >
           <div className="flex items-center gap-20">
             {/* Logo */}
