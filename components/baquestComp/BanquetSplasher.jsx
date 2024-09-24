@@ -7,10 +7,12 @@ import Image from "next/image";
 const BanquetSplasher = () => {
   return (
     <div className="relative w-full h-screen">
-      <img
+      <Image
         src={banquetHeroConfig.src}
         className="w-full h-full object-cover"
-        alt="Homepage"
+        alt={banquetHeroConfig.name}
+        width={1000}
+        height={1000}
       />
 
       {/* Full-screen semi-transparent overlay */}
