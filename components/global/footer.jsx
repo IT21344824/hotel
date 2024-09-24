@@ -32,7 +32,7 @@ const Footer = () => {
     <section className="px-4">
       <div className="mx-auto grid w-full max-w-screen-xl gap-8 py-20 lg:grid-cols-5">
         <div className="sm:col-span-3 lg:col-span-2">
-          <h3 className="mb-2 text-sm font-bold">Shadcn Boilerplate</h3>
+          <h3 className="mb-2 text-sm font-bold">Luxury Hotel</h3>
           <p className="max-w-sm text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
