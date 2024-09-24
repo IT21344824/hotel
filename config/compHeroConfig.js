@@ -3,7 +3,7 @@ export const teamHeroConfig = {
   src: "/images/team.png",
   navigation: [
     { text: "Home / pages / ", color: "text-orange-400" },
-    { text: "Team", color: "text-white" },
+    { text: "About us", color: "text-white" },
   ],
 };
 
@@ -12,6 +12,15 @@ export const menuHeroConfig = {
   src: "/images/team.png",
   navigation: [
     { text: "Home / pages / ", color: "text-orange-400" },
-    { text: "Menu", color: "text-white" },
+    { text: "Restaurant", color: "text-white" },
+  ],
+};
+
+export const banquetHeroConfig = {
+  name: "Banquet",
+  src: "/images/banquest/banquet.png",
+  navigation: [
+    { text: "Home / pages / ", color: "text-orange-400" },
+    { text: "Banquet", color: "text-white" },
   ],
 };

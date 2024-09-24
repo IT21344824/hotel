@@ -31,3 +31,10 @@ export const socialIcon = {
     icon: "/images/icon/Apple_icon.png",
   },
 };
+
+export const banquetIcon = {
+  startEvent: {
+    name: "startEvent",
+    icon: "/images/icon/start your event icon.png",
+  },
+};
