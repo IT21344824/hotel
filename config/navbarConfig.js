@@ -4,8 +4,8 @@ const navbarConfig = {
     label: "Banquet",
   },
   homeDelivery: {
-    href: "/home-delivery",
-    label: "Home Delivery",
+    href: "/bar",
+    label: "Lobby Bar",
   },
   events: {
     href: "/events",
