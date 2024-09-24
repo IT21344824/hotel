@@ -1,9 +1,14 @@
 import React from "react";
+import BanquetSplasher from "@/components/baquestComp/BanquetSplasher";
+import Inspiration from "@/components/baquestComp/Inspiration";
+import OurServices from "@/components/baquestComp/OurServices";
 
 const page = () => {
   return (
     <div>
-      <h1>Banquet halls</h1>
+      <BanquetSplasher />
+      <Inspiration />
+      <OurServices />
     </div>
   );
 };

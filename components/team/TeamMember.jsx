@@ -38,6 +38,8 @@ const TeamMember = () => {
                                 src={chef.img}
                                 alt={chef.name}
                                 className={`h-full w-full object-cover object-center transition-transform duration-300 ease-in-out ${hoveredChefIndex === index ? "scale-110" : ""}`}
+                                width={400}
+                                height={400}
                             />
                         </div>
                         <h3 className="text-xl font-bold mt-4">{chef.name}</h3>
@@ -61,6 +63,8 @@ const TeamMember = () => {
                                         src={social.img}
                                         alt={social.platform}
                                         className="h-5 w-5"
+                                        width={56}
+                                        height={56}
                                     />
                                 </a>
                             ))}
