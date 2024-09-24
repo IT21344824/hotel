@@ -23,7 +23,7 @@ const BanquetSplasher = () => {
 
         <div className="text-center flex items-center justify-between gap-96 mt-20 ">
           <div className="text-2xl font-bold mb-4 flex-1 ">
-            <Button variant="secondary" size="lg" className="text-xl rounded-sm bg-orange-400 text-white gap-4 absolute bottom-10 left-40">
+            <Button variant="secondary" size="lg" className="text-xl rounded-sm bg-orange-400 text-white gap-4 absolute bottom-10 left-40 h-7">
               <Image
                 src={banquetIcon.startEvent.icon}
                 alt={banquetIcon.startEvent.name}
