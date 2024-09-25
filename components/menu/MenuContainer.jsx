@@ -4,12 +4,19 @@ import Image from 'next/image'; // Import Next.js Image component
 import { menuIcon } from "@/config/iconConfig";
 import { menu_Dummy_1 } from "@/components/dummy/menu_Dummy";
 import Link from 'next/link';
+import { BsCartPlusFill } from 'react-icons/bs'; // Import Cart Icon
+import { useCartStore } from "@/stores/cartStore"; // Zustand cart store
 
 const MenuContainer = () => {
     const [activeTab, setActiveTab] = useState("breakfast");
+    const { addItem } = useCartStore(); // Use Zustand store for adding items to the cart
 
     const handleTabClick = (tab) => {
         setActiveTab(tab);
+    };
+
+    const handleAddToCart = (item) => {
+        addItem(item);
     };
 
     return (
@@ -80,7 +87,7 @@ const MenuContainer = () => {
 
                     <div className='flex flex-wrap items-center justify-center gap-10 mt-10'>
                         {menu_Dummy_1.map(item => (
-                            <div key={item.id} className=''>
+                            <div key={item.id} className='relative group'>
                                 <Link href={{
                                     pathname: `/restaurant/${item.id}`,
                                     query: {
@@ -90,7 +97,6 @@ const MenuContainer = () => {
                                         description: item.description
                                     }
                                 }}>
-
                                     <div
                                         style={{ '--image-url': `url(${item.img})` }}
                                         className='h-60 w-60 bg-[image:var(--image-url)] bg-cover bg-center rounded-lg'
@@ -101,6 +107,14 @@ const MenuContainer = () => {
                                         </div>
                                     </div>
                                 </Link>
+
+                                {/* Add to Cart Button */}
+                                <button
+                                    className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition-all"
+                                    onClick={() => handleAddToCart(item)}
+                                >
+                                    <BsCartPlusFill size={24} />
+                                </button>
                             </div>
                         ))}
                     </div>
