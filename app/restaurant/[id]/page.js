@@ -32,8 +32,8 @@ const FoodItemPG = () => {
   };
 
   return (
-    <div className="mt-32 flex items-center justify-center ">
-      <div className="flex gap-10 p-10 shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)]">
+    <div className="mt-32 flex items-center justify-center  ">
+      <div className="flex gap-10 p-10 shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)] ">
         <div className="">
           <Image
             src={item.img}

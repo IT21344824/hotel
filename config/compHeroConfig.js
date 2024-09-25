@@ -24,3 +24,12 @@ export const banquetHeroConfig = {
     { text: "Banquet", color: "text-white" },
   ],
 };
+
+export const eventHeroConfig = {
+  name: "event category",
+  src: "/images/events/eventcategorySplaher.jpg",
+  navigation: [
+    { text: "Home / pages / ", color: "text-orange-400" },
+    { text: "Banquet", color: "text-white" },
+  ],
+};
