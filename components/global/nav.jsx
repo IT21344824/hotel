@@ -49,7 +49,7 @@ export default function Nav() {
         >
           <div className="flex items-center">
             <Link
-              className="flex items-center space-x-1 text-xl font-bold text-white hover:text-zinc-500 dark:text-black"
+              className="flex items-center space-x-1 text-xl font-bold text-black hover:text-zinc-500 dark:text-black"
               href={appConfig.href}
               aria-label={`Go to ${appConfig.name} homepage`}
             >
