@@ -5,6 +5,7 @@ import Link from "next/link";
 import navbarConfig from "@/config/navbarConfig";
 import { FaHotel } from "react-icons/fa6";
 import { MdShoppingCart } from "react-icons/md";
+import { TbTruckDelivery } from "react-icons/tb";
 import { appConfig } from "@/config/appConfig";
 import { useCartStore } from "@/stores/cartStore";
 import Image from "next/image";
@@ -174,6 +175,13 @@ export default function Nav() {
                 </div>
               )}
             </div>
+            <div className="bg-slate-100 p-2 border-2 rounded-md cursor-pointer hover:bg-slate-200">
+              <Link href="/orders">
+                <TbTruckDelivery />
+              </Link>
+
+            </div>
+
           </div>
         </header>
       ) : (
@@ -303,6 +311,12 @@ export default function Nav() {
                   )}
                 </div>
               )}
+            </div>
+            <div className="bg-slate-100 p-2 border-2 rounded-md cursor-pointer hover:bg-slate-200">
+              <Link href="/orders">
+                <TbTruckDelivery />
+              </Link>
+
             </div>
           </div>
         </header>
