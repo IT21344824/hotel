@@ -127,7 +127,7 @@ function ARModelViewer({ modelPath, modelScale = [0.1, 0.1, 0.1] }) {
         <div style={styles.instructions}>
           <h2>Point your camera at a flat surface</h2>
           <p>Move your device around to find a surface, then tap to place the model.</p>
-          <p style={{ fontSize: '0.8em', color: '#999' }}>Tap 'Start AR' to begin</p>
+          <p style={{ fontSize: '0.8em', color: '#999' }}>Tap Start AR to begin</p>
         </div>
       )}
       {/* Surface Detection Indicator */}
