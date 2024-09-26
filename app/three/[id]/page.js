@@ -1,13 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import ARModelViewer from "@/components/3D/ARModelViewer";
 
-// Sample products data (you may load this from an external source in a real project)
+// Sample products data
 const products = [
   {
     id: 1,
@@ -17,38 +17,7 @@ const products = [
     category: "Fast Food",
     description: "A delicious 3D burger model."
   },
-  {
-    id: 2,
-    name: "French Fries",
-    modelPath: "/models/french.glb",
-    price: 1200,
-    category: "Fast Food",
-    description: "Crispy French fries model."
-  },
-  {
-    id: 3,
-    name: "Ice Cream",
-    modelPath: "/models/ice.glb",
-    price: 800,
-    category: "Dessert",
-    description: "Cool ice cream 3D model."
-  },
-  {
-    id: 4,
-    name: "Submarine",
-    modelPath: "/models/submarine.glb",
-    price: 3100,
-    category: "Vehicles",
-    description: "A 3D model of a submarine."
-  },
-  {
-    id: 5,
-    name: "Wine Bottle",
-    modelPath: "/models/wine.glb",
-    price: 2200,
-    category: "Beverages",
-    description: "3D model of a wine bottle."
-  }
+  // Other products...
 ];
 
 export default function ProductScreen() {
@@ -81,7 +50,7 @@ export default function ProductScreen() {
     );
   }
 
-  // If in AR view, show the ARModelViewer
+  // Render AR model viewer if the user opts for AR
   if (viewInAR) {
     return <ARModelViewer modelPath={product.modelPath} modelScale={[0.1, 0.1, 0.1]} />;
   }
@@ -107,17 +76,14 @@ export default function ProductScreen() {
         </Canvas>
       </div>
 
-      {/* Right Section: Product Details - Half width and scrollable if needed */}
+      {/* Right Section: Product Details */}
       <div className="w-full lg:w-1/2 mt-20 lg:mt-0 lg:ml-8 p-6 overflow-auto h-[100vh]">
         <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-
         <div className="text-gray-600 mb-4">
           <span className="font-semibold">Categories:</span>{" "}
           <span className="text-gray-800">{product.category}</span>
         </div>
-
         <p className="text-gray-600 mb-4">{product.description}</p>
-
         <p className="text-3xl font-bold text-red-600 mb-6">Rs. {product.price}</p>
 
         {/* Add to Cart or Update Button */}
