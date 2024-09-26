@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
 // import { Elements } from "@stripe/react-stripe-js";
 
-const page = () => {
+const CheckoutPG = () => {
   const { cart, addItem, removeItem, updateQuantity } = useCartStore(); // Zustand cart store
   const [transportMethod, setTransportMethod] = useState("");
   const [subtotal, setSubtotal] = useState(0); // Initialize total to 0 (default)
@@ -110,4 +110,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CheckoutPG;
