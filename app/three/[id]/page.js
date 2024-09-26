@@ -48,6 +48,14 @@ const products = [
     price: 2200,
     category: "Beverages",
     description: "3D model of a wine bottle."
+  },
+  {
+    id: 6,
+    name: "Magic",
+    modelPath: "/models/magic.glb",
+    price: 2200,
+    category: "Beverages",
+    description: "3D model of a wine bottle."
   }
 ];
 
