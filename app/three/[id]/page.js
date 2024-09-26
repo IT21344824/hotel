@@ -1,9 +1,11 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense } from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import ARModelViewer from "@/components/3D/ARModelViewer";
 
 // Sample products data (you may load this from an external source in a real project)
 const products = [
@@ -52,9 +54,20 @@ const products = [
 export default function ProductScreen() {
   const params = useParams(); 
   const { id } = params;
+  const [isARSupported, setIsARSupported] = useState(false);
+  const [viewInAR, setViewInAR] = useState(false); // To track AR view state
 
   // Find the product by id
   const product = products.find((p) => p.id === Number(id));
+
+  // Check if AR is supported
+  useEffect(() => {
+    if (navigator.xr) {
+      navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
+        setIsARSupported(supported);
+      });
+    }
+  }, []);
 
   // Function to load the respective model
   function Model(props) {
@@ -68,9 +81,15 @@ export default function ProductScreen() {
     );
   }
 
+  // If in AR view, show the ARModelViewer
+  if (viewInAR) {
+    return <ARModelViewer modelPath={product.modelPath} modelScale={[0.1, 0.1, 0.1]} />;
+  }
+
+  // Normal 3D view
   return (
     <div className="flex flex-col lg:flex-row items-start w-full h-full">
-      {/* Left Section: 3D Model Viewer - 100vh height and 50% of width */}
+      {/* Left Section: 3D Model Viewer - 80vh height and 50% of width */}
       <div className="w-full lg:w-1/2 h-[80vh] border border-gray-500 mt-6">
         <Canvas className="relative h-full w-full">
           {/* Lighting setup */}
@@ -102,9 +121,19 @@ export default function ProductScreen() {
         <p className="text-3xl font-bold text-red-600 mb-6">Rs. {product.price}</p>
 
         {/* Add to Cart or Update Button */}
-        <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">
+        <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 mb-4">
           Add to Cart
         </button>
+
+        {/* Conditionally display the AR button */}
+        {isARSupported && (
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            onClick={() => setViewInAR(true)} // Switch to AR view
+          >
+            View in AR
+          </button>
+        )}
       </div>
     </div>
   );
