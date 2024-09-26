@@ -25,12 +25,14 @@ const CategoryContainer = ({ category, title, sub_heading }) => {
         return <div>No categories available</div>;
     }
     return (
-        <div className='flex flex-col items-center justify-center mt-20 '>
-            <div className=''>
-                <h1 className='text-center'>{title}</h1>
-                <h4 className='text-center mb-4 '>{sub_heading}</h4>
+        <div className='flex flex-col items-center justify-center mt-20 w-[78%]'>
 
-                <div className='flex flex-wrap items-center justify-center gap-10 mx-40'>
+            <h1 className='text-center'>{title}</h1>
+            <h4 className='text-center mb-4 '>{sub_heading}</h4>
+
+            {/* Wrapping container with a max height and scroll */}
+            <div className='w-full overflow-x-auto scrollbar-thin  scrollbar-thumb-slate-700 scrollbar-track-slate-300 '>
+                <div className='flex gap-10 px-10 mb-2'>
                     {category.map(item => (
                         <div key={item.id}>
                             <Card className="w-[250px] bg-[#FFF5E0]">
@@ -62,6 +64,7 @@ const CategoryContainer = ({ category, title, sub_heading }) => {
 
                 </div>
             </div>
+
         </div>
     )
 }
