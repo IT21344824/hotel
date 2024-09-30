@@ -5,7 +5,7 @@ import { menuIcon } from "@/config/iconConfig";
 import { menu_Dummy_1 } from "@/components/dummy/menu_Dummy";
 import Link from 'next/link';
 import { BsCartPlusFill } from 'react-icons/bs'; // Import Cart Icon
-import { useCartStore } from "@/stores/cartStore"; // Zustand cart store
+import { useCartStore } from "@/hooks/cartStore"; // Zustand cart store
 
 const MenuContainer = () => {
     const [activeTab, setActiveTab] = useState("breakfast");

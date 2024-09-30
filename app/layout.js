@@ -6,6 +6,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/global/nav";
 import Footer from "@/components/global/footer";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/lib/NextAuth";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -14,30 +16,32 @@ const fontSans = FontSans({
 
 export const metadata = {
   title: "Luxury Hotel",
-  description:
-    "Luxury Hotel demo",
+  description: "Luxury Hotel demo",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+      <SessionProvider session={session}>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable,
+          )}
         >
-          <Nav />
-          {children}
-          <Footer />
-        </ThemeProvider>
-      </body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Nav />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

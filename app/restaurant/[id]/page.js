@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/stores/cartStore"; // Zustand cart store
+import { useCartStore } from "@/hooks/cartStore"; // Zustand cart store
 
 const FoodItemPG = () => {
   const params = useParams(); // For dynamic route parameters
