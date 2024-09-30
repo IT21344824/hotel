@@ -95,7 +95,7 @@ const page = () => {
   ];
 
   return (
-    <div className="mt-20">
+    <div className="mx-24 mt-20">
       <div className="mx-32 rounded-md px-3 py-4 shadow-[3.0px_3.0px_8.0px_rgba(0,0,0,0.38)]">
         {" "}
         <h2> Orders List </h2>
@@ -105,7 +105,7 @@ const page = () => {
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">Invoice</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="min-w-28">Status</TableHead>
               <TableHead>Method</TableHead>
               <TableHead>Items</TableHead>
               <TableHead className="text-right">Amount</TableHead>
@@ -115,9 +115,9 @@ const page = () => {
             {invoices.map((invoice) => (
               <TableRow key={invoice.invoice}>
                 <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                <TableCell>
+                <TableCell className="min-w-28">
                   <span
-                    className={`ml-4 ${
+                    className={`mr-1 ${
                       invoice.paymentStatus === "On The Way"
                         ? "rounded-lg bg-yellow-400 p-1 text-white"
                         : "rounded-lg bg-green-400 p-1 text-white"
@@ -127,7 +127,7 @@ const page = () => {
                   </span>
                 </TableCell>
                 <TableCell>{invoice.paymentMethod}</TableCell>
-                <TableCell className="flex w-full overflow-hidden text-ellipsis whitespace-nowrap md:w-[600px] lg:w-[750px] ">
+                <TableCell className="flex w-full overflow-hidden text-ellipsis whitespace-nowrap md:w-[400px] lg:w-[550px] ">
                   {invoice.itemsDetails?.map((item, index) => (
                     <div key={index}>
                       {item.count} - {item.name}

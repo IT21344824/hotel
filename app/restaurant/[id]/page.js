@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useCartStore } from "@/stores/cartStore"; // Zustand cart store
 
 const FoodItemPG = () => {
   const params = useParams(); // For dynamic route parameters
   const searchParams = useSearchParams(); // For query parameters
+  const { addItem } = useCartStore(); // Use Zustand store for adding items to the cart
+  const [quantity, setQuantity] = useState(1);
 
   const item = {
     id: params.id, // Get the id from dynamic route
@@ -15,8 +18,6 @@ const FoodItemPG = () => {
     img: searchParams.get("img"),
     description: searchParams.get("description"),
   };
-
-  const [quantity, setQuantity] = useState(1);
 
   const handleQtyIncrement = () => {
     setQuantity((previousCount) => previousCount + 1);
@@ -29,6 +30,10 @@ const FoodItemPG = () => {
       }
       return 1; // If the quantity is already 1, keep it at 1
     });
+  };
+
+  const handleAddToCart = (item) => {
+    addItem(item);
   };
 
   return (
@@ -105,7 +110,7 @@ const FoodItemPG = () => {
             </div>
           </div>
           <div>
-            <Button> add to cart</Button>
+            <Button onClick={() => handleAddToCart(item)}> add to cart</Button>
           </div>
         </div>
       </div>

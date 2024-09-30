@@ -3,9 +3,15 @@ import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import Link from "next/link";
 import navbarConfig from "@/config/navbarConfig";
+
+//icons
 import { FaHotel } from "react-icons/fa6";
+import { MdDeleteForever } from "react-icons/md";
 import { MdShoppingCart } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { AiFillMinusCircle } from "react-icons/ai";
+
 import { appConfig } from "@/config/appConfig";
 import { useCartStore } from "@/stores/cartStore";
 import Image from "next/image";
@@ -115,14 +121,34 @@ export default function Nav() {
                           <li key={item.id} className="flex justify-between items-start mb-2">
                             {/* Display Item Image */}
                             <div className="flex items-start">
-                              <Image
-                                src={item.img}
-                                alt={item.name}
-                                width={50}
-                                height={50}
-                                className="rounded-md"
-                              />
-                              <div className="ml-3 flex flex-col">
+                              <div>
+                                <div className="w-20 h-20 relative">
+                                  <Image
+                                    src={item.img}
+                                    alt={item.name}
+                                    layout="fill"
+                                    className="object-cover rounded-md"
+                                  />
+                                </div>
+                                {/* Quantity Controls */}
+                                <div className="flex justify-between items-center mt-2">
+                                  <button
+                                    className="cursor-pointer"
+                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                    disabled={item.quantity === 1}
+                                  >
+                                    <AiFillMinusCircle className="w-5 h-5" />
+                                  </button>
+                                  <button
+                                    className="cursor-pointer"
+                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                  >
+                                    <AiFillPlusCircle className="w-5 h-5" />
+                                  </button>
+                                </div>
+                              </div>
+
+                              <div className="ml-3 flex flex-col ">
                                 {/* Item name */}
                                 <p className="font-medium">{item.name}</p>
                                 {/* Quantity and price */}
@@ -133,27 +159,14 @@ export default function Nav() {
                                 <p className="text-sm text-gray-500">${item.quantity * item.price}</p>
                               </div>
                             </div>
-                            {/* Quantity Controls */}
-                            <div className="flex items-center space-x-2">
-                              <button
-                                className="bg-gray-200 px-2 rounded"
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                disabled={item.quantity === 1}
-                              >
-                                -
-                              </button>
-                              <button
-                                className="bg-gray-200 px-2 rounded"
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              >
-                                +
-                              </button>
-                              {/* Remove Item */}
+                            {/* remove item */}
+                            <div className="flex items-center space-x-2 ">
+
                               <button
                                 className="text-red-500 ml-2"
                                 onClick={() => removeItem(item.id)}
                               >
-                                Remove
+                                <MdDeleteForever />
                               </button>
                             </div>
                           </li>
@@ -253,14 +266,33 @@ export default function Nav() {
                           <li key={item.id} className="flex justify-between items-start mb-2">
                             {/* Display Item Image */}
                             <div className="flex items-start">
-                              <Image
-                                src={item.img}
-                                alt={item.name}
-                                width={50}
-                                height={50}
-                                className="rounded-md"
-                              />
-                              <div className="ml-3 flex flex-col">
+                              <div>
+                                <Image
+                                  src={item.img}
+                                  alt={item.name}
+                                  width={100}
+                                  height={100}
+                                  className="rounded-md"
+                                />
+                                {/* Quantity Controls */}
+                                <div className="flex justify-between items-center mt-2">
+                                  <button
+                                    className="cursor-pointer"
+                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                    disabled={item.quantity === 1}
+                                  >
+                                    <AiFillMinusCircle className="w-5 h-5" />
+                                  </button>
+                                  <button
+                                    className="cursor-pointer"
+                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                  >
+                                    <AiFillPlusCircle className="w-5 h-5" />
+                                  </button>
+                                </div>
+                              </div>
+
+                              <div className="ml-3 flex flex-col ">
                                 {/* Item name */}
                                 <p className="font-medium">{item.name}</p>
                                 {/* Quantity and price */}
@@ -271,26 +303,14 @@ export default function Nav() {
                                 <p className="text-sm text-gray-500">${item.quantity * item.price}</p>
                               </div>
                             </div>
-                            {/* Quantity Controls */}
-                            <div className="flex items-center space-x-2">
-                              <button
-                                className="bg-gray-200 px-2 rounded"
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                disabled={item.quantity === 1}
-                              >
-                                -
-                              </button>
-                              <button
-                                className="bg-gray-200 px-2 rounded"
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              >
-                                +
-                              </button>
+                            {/* remove item */}
+                            <div className="flex items-center space-x-2 ">
+
                               <button
                                 className="text-red-500 ml-2"
                                 onClick={() => removeItem(item.id)}
                               >
-                                Remove
+                                <MdDeleteForever />
                               </button>
                             </div>
                           </li>
