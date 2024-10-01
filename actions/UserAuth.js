@@ -7,64 +7,61 @@
 
 import { signIn, signOut } from "@/lib/NextAuth";
 import { db } from "@/lib/db";
-import { error } from "console";
-import { AuthError } from "next-auth";
-import email from "next-auth/providers/email";
-import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
+import { revalidatePath } from "next/cache";
 
 const getUserByEmail = async (email) => {
   try {
     const user = await db.user.findUnique({
-      where: {
-        email,
-      },
+      where: { email },
     });
     return user;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching user:", error);
     return null;
   }
 };
 
 export const login = async (provider) => {
-  await signIn(provider, { redirectTo: "/" });
-  revalidatePath("/");
+  try {
+    await signIn(provider, { redirectTo: "/" });
+    revalidatePath("/");
+  } catch (error) {
+    console.error("Login failed:", error);
+  }
 };
 
 export const logout = async () => {
-  await signOut({ redirectTo: "/" });
-  revalidatePath("/");
+  try {
+    await signOut({ redirectTo: "/" });
+    revalidatePath("/");
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
 };
 
 export const signupWithCreds = async (formData) => {
-  const rawFormData = {
-    email: formData.get("email"),
-    password: formData.get("password"),
-    role: "ADMIN",
-    redirectTo: "/",
-  };
+  const email = formData.get("email");
+  const password = formData.get("password");
 
-  const existingUser = await getUserByEmail(formData.get("email"));
-  // console.log(existingUser);
+  const existingUser = await getUserByEmail(email);
   if (existingUser) {
-    console.log("User email is taken taken.");
-    return { error: "User email is taken taken." };
+    console.error("User email is already taken.");
+    return { error: "User email is already taken." };
   }
 
   try {
-    await signIn("credentials", rawFormData);
+    await signIn("credentials", {
+      email,
+      password,
+      role: "ADMIN",
+      redirectTo: "/",
+    });
   } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Invalid creadential" };
-        default:
-          return { error: "Somthing went wrong" };
-      }
-    }
-    throw error;
+    console.error("Sign-up failed:", error);
+    return { error: "Something went wrong during sign-up." };
   }
+
   revalidatePath("/");
 };
 
@@ -73,45 +70,32 @@ export const loginWithCreds = async (formData) => {
   const password = formData.get("password");
 
   if (!email || !password) {
-    console.log("Email and password are required.");
+    console.error("Email and password are required.");
     return { error: "Email and password are required." };
   }
 
-  const existingUser = await getUserByEmail(email);
-  if (!existingUser || !existingUser.hashedPassword) {
-    console.log("User not found.");
+  const user = await getUserByEmail(email);
+  if (!user || !user.hashedPassword) {
+    console.error("User not found.");
     return { error: "User not found." };
   }
 
-  const passwordMatch = bcrypt.compareSync(
-    password,
-    existingUser.hashedPassword
-  );
-  if (!passwordMatch) {
-    console.log("Incorrect password.");
+  const isMatch = await bcrypt.compare(password, user.hashedPassword);
+  if (!isMatch) {
+    console.error("Incorrect password.");
     return { error: "Incorrect password." };
   }
 
-  console.log(" password.", password);
-  console.log("hashed password.", passwordMatch);
-
-  // Use NextAuth's signIn function to log the user in
   try {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: "/", // Set redirect to false to handle it manually
+      redirectTo: "/",
     });
   } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Invalid creadential" };
-        default:
-          return { error: "Somthing went wrong" };
-      }
-    }
-    throw error;
+    console.error("Login failed:", error);
+    return { error: "Invalid credentials or login failed." };
   }
+
   revalidatePath("/");
 };

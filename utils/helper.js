@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 
-export function saltAndHashPassword(password) {
-  const saltRounds = 10; // Adjust to user salt round
-  const salt = bcrypt.genSaltSync(saltRounds); // Synchronoustly generate a salt
-  const hash = bcrypt.hashSync(password, salt); // Synchronoustly hash the password
+export async function saltAndHashPassword(password) {
+  const saltRounds = 10; // Set salt rounds
+  const salt = await bcrypt.genSalt(saltRounds); // Generate salt asynchronously
+  const hash = await bcrypt.hash(password, salt); // Hash the password asynchronously
   return hash; // Return the hash directly as a string
 }
