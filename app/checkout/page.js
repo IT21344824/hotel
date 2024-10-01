@@ -5,10 +5,10 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/stores/cartStore";
+import { useCartStore } from "@/hooks/cartStore";
 // import { Elements } from "@stripe/react-stripe-js";
 
-const Page = () => {
+const CheckoutPG = () => {
   const { cart, addItem, removeItem, updateQuantity } = useCartStore(); // Zustand cart store
   const [transportMethod, setTransportMethod] = useState("");
   const [subtotal, setSubtotal] = useState(0); // Initialize total to 0 (default)
@@ -110,4 +110,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default CheckoutPG;
