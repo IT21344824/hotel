@@ -7,61 +7,64 @@
 
 import { signIn, signOut } from "@/lib/NextAuth";
 import { db } from "@/lib/db";
-import bcrypt from "bcryptjs";
+import { error } from "console";
+import { AuthError } from "next-auth";
+import email from "next-auth/providers/email";
 import { revalidatePath } from "next/cache";
+import bcrypt from "bcryptjs";
 
 const getUserByEmail = async (email) => {
   try {
     const user = await db.user.findUnique({
-      where: { email },
+      where: {
+        email,
+      },
     });
     return user;
   } catch (error) {
-    console.error("Error fetching user:", error);
+    console.log(error);
     return null;
   }
 };
 
 export const login = async (provider) => {
-  try {
-    await signIn(provider, { redirectTo: "/" });
-    revalidatePath("/");
-  } catch (error) {
-    console.error("Login failed:", error);
-  }
+  await signIn(provider, { redirectTo: "/" });
+  revalidatePath("/");
 };
 
 export const logout = async () => {
-  try {
-    await signOut({ redirectTo: "/" });
-    revalidatePath("/");
-  } catch (error) {
-    console.error("Logout failed:", error);
-  }
+  await signOut({ redirectTo: "/" });
+  revalidatePath("/");
 };
 
 export const signupWithCreds = async (formData) => {
-  const email = formData.get("email");
-  const password = formData.get("password");
+  const rawFormData = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+    role: "ADMIN",
+    redirectTo: "/",
+  };
 
-  const existingUser = await getUserByEmail(email);
+  const existingUser = await getUserByEmail(formData.get("email"));
+  // console.log(existingUser);
   if (existingUser) {
-    console.error("User email is already taken.");
-    return { error: "User email is already taken." };
+    console.log("User email is taken taken.");
+    return { error: "User email is taken taken." };
   }
 
   try {
-    await signIn("credentials", {
-      email,
-      password,
-      role: "ADMIN",
-      redirectTo: "/",
-    });
+    await signIn("credentials", rawFormData);
   } catch (error) {
-    console.error("Sign-up failed:", error);
-    return { error: "Something went wrong during sign-up." };
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid creadential" };
+        default:
+          return { error: "Somthing went wrong" };
+      }
+    }
+    throw error;
   }
-
   revalidatePath("/");
 };
 
@@ -70,32 +73,45 @@ export const loginWithCreds = async (formData) => {
   const password = formData.get("password");
 
   if (!email || !password) {
-    console.error("Email and password are required.");
+    console.log("Email and password are required.");
     return { error: "Email and password are required." };
   }
 
-  const user = await getUserByEmail(email);
-  if (!user || !user.hashedPassword) {
-    console.error("User not found.");
+  const existingUser = await getUserByEmail(email);
+  if (!existingUser || !existingUser.hashedPassword) {
+    console.log("User not found.");
     return { error: "User not found." };
   }
 
-  const isMatch = await bcrypt.compare(password, user.hashedPassword);
-  if (!isMatch) {
-    console.error("Incorrect password.");
+  const passwordMatch = bcrypt.compareSync(
+    password,
+    existingUser.hashedPassword
+  );
+  if (!passwordMatch) {
+    console.log("Incorrect password.");
     return { error: "Incorrect password." };
   }
 
+  console.log(" password.", password);
+  console.log("hashed password.", passwordMatch);
+
+  // Use NextAuth's signIn function to log the user in
   try {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: "/",
+      redirectTo: "/", // Set redirect to false to handle it manually
     });
   } catch (error) {
-    console.error("Login failed:", error);
-    return { error: "Invalid credentials or login failed." };
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid creadential" };
+        default:
+          return { error: "Somthing went wrong" };
+      }
+    }
+    throw error;
   }
-
   revalidatePath("/");
 };
