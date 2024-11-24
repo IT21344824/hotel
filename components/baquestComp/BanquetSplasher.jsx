@@ -25,7 +25,12 @@ const BanquetSplasher = () => {
         <div className="text-center flex items-center justify-between gap-96 mt-20 ">
           <div className="text-2xl font-bold mb-4 flex-1 ">
             <Link href="/events/category">
-              <Button variant="secondary" size="lg" className="text-xl rounded-sm bg-orange-400 text-white gap-4 absolute bottom-10 left-40 h-10">
+              <Button variant="secondary" size="lg" className="text-2xl rounded-lg bg-orange-400 text-white gap-4 absolute bottom-10 left-40 h-16 
+              bg-gradient-to-r from-orange-400 via-red-500 to-yellow-500
+              shadow-lg shadow-orange-500/50 transition-transform
+              transform hover:scale-125 hover:shadow-orange-600/70 hover:brightness-110
+              hover:animate-pulse focus:outline-none
+              animate-pulse ">
                 <Image
                   src={banquetIcon.startEvent.icon}
                   alt={banquetIcon.startEvent.name}

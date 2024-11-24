@@ -17,7 +17,7 @@ export default function Model() {
     console.log(actions)
     //@ts-ignore
     actions["Experiment"].play().paused = true
-  }, [])
+  }, [actions])
   useFrame(
     () =>
       //@ts-ignore

@@ -9,7 +9,6 @@ import { signIn, signOut } from "@/lib/NextAuth";
 import { db } from "@/lib/db";
 import { error } from "console";
 import { AuthError } from "next-auth";
-import email from "next-auth/providers/email";
 import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 
@@ -85,7 +84,7 @@ export const loginWithCreds = async (formData) => {
 
   const passwordMatch = bcrypt.compareSync(
     password,
-    existingUser.hashedPassword
+    existingUser.hashedPassword,
   );
   if (!passwordMatch) {
     console.log("Incorrect password.");

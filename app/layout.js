@@ -1,13 +1,10 @@
 import { ThemeProvider } from "@/components/theme-provider";
-
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-
 import { cn } from "@/lib/utils";
 import Nav from "@/components/global/nav";
 import Footer from "@/components/global/footer";
-import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/NextAuth";
+import { SessionProvider, useSession } from "next-auth/react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -19,11 +16,10 @@ export const metadata = {
   description: "Luxury Hotel demo",
 };
 
-export default async function RootLayout({ children }) {
-  const session = await auth();
+export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProvider session={session}>
+      <SessionProvider>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",

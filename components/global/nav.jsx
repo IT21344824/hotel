@@ -61,6 +61,7 @@ export default function Nav() {
   return (
     <>
       {isVisible ? (
+        // when scrolling show this
         <header
           className="sticky top-0 z-30 flex h-16 items-center justify-between border-b px-4 bg-white lg:px-6 transition-all duration-300 ease-in-out"
         >
@@ -237,7 +238,8 @@ export default function Nav() {
           </div>
         </header>
       ) : (
-        <header className="absolute top-0 left-0 w-full z-30 flex h-16 items-center justify-around px-4 lg:px-6 bg-white text-black transition-all duration-300 ease-in-out">
+        // when not scrolling show this
+        <header className=" top-0 left-0 w-full z-30 flex h-16 items-center justify-around px-4 lg:px-6 bg-white text-black transition-all duration-300 ease-in-out">
           <div className="flex items-center gap-20">
             <Link
               className="flex items-center space-x-1 text-xl font-bold text-black hover:text-gray-300"
@@ -372,12 +374,15 @@ export default function Nav() {
                 </div>
               )}
             </div>
-            <div className="bg-slate-100 p-2 border-2 rounded-md cursor-pointer hover:bg-slate-200">
-              <Link href="/orders">
-                <TbTruckDelivery />
-              </Link>
 
-            </div>
+            {isAuthenticated ? (
+              <div className="bg-slate-100 p-2 border-2 rounded-md cursor-pointer hover:bg-slate-200">
+                <Link href="/orders">
+                  <TbTruckDelivery />
+                </Link>
+              </div>
+            ) : ('')}
+
             <div>
               {isAuthenticated ? (
                 <div className="flex gap-x-2"><div className='flex items-center gap-x-2 text-sm'>

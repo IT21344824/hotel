@@ -20,9 +20,9 @@ const BanquetSplasher = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       {/* Text at the bottom */}
-      <div className="absolute flex flex-col top-20 text-white p-6 w-full items-start justify-center">
+      <div className="absolute flex flex-col top-20 text-white p-6 w-full items-start justify-center ">
 
-        <div className="text-center flex items-center justify-center  mt-20 ml-20">
+        <div className="text-center flex items-center justify-between w-full   mt-20 pl-20">
           <div className="text-left flex-1">
             <p
               className="text-4xl mb-2"
@@ -60,6 +60,14 @@ const BanquetSplasher = () => {
               Stay and enjoy luxury redefined at the most affordable Event
             </p>
           </div>
+
+          <Link href="/eventManagement/create-event">
+            <Button size="lg" className="bg-red-700" >
+              Event Management
+            </Button>
+          </Link>
+
+
 
         </div>
       </div>

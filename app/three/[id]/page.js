@@ -15,7 +15,7 @@ const products = [
     modelPath: "/models/burger.glb",
     price: 1500,
     category: "Fast Food",
-    description: "A delicious 3D burger model."
+    description: "A delicious 3D burger model.",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const products = [
     modelPath: "/models/french.glb",
     price: 1200,
     category: "Fast Food",
-    description: "Crispy French fries model."
+    description: "Crispy French fries model.",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const products = [
     modelPath: "/models/ice.glb",
     price: 800,
     category: "Dessert",
-    description: "Cool ice cream 3D model."
+    description: "Cool ice cream 3D model.",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const products = [
     modelPath: "/models/submarine.glb",
     price: 3100,
     category: "Vehicles",
-    description: "A 3D model of a submarine."
+    description: "A 3D model of a submarine.",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const products = [
     modelPath: "/models/wine.glb",
     price: 2200,
     category: "Beverages",
-    description: "3D model of a wine bottle."
+    description: "3D model of a wine bottle.",
   },
   {
     id: 6,
@@ -55,12 +55,12 @@ const products = [
     modelPath: "/models/magic.glb",
     price: 2200,
     category: "Beverages",
-    description: "3D model of a wine bottle."
-  }
+    description: "3D model of a wine bottle.",
+  },
 ];
 
 export default function ProductScreen() {
-  const params = useParams(); 
+  const params = useParams();
   const { id } = params;
   const [isARSupported, setIsARSupported] = useState(false);
   const [viewInAR, setViewInAR] = useState(false); // To track AR view state
@@ -71,7 +71,7 @@ export default function ProductScreen() {
   // Check if AR is supported
   useEffect(() => {
     if (navigator.xr) {
-      navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
+      navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
         setIsARSupported(supported);
       });
     }
@@ -91,14 +91,19 @@ export default function ProductScreen() {
 
   // Render AR model viewer if the user opts for AR
   if (viewInAR) {
-    return <ARModelViewer modelPath={product.modelPath} modelScale={[0.1, 0.1, 0.1]} />;
+    return (
+      <ARModelViewer
+        modelPath={product.modelPath}
+        modelScale={[0.1, 0.1, 0.1]}
+      />
+    );
   }
 
   // Normal 3D view
   return (
-    <div className="flex flex-col lg:flex-row items-start w-full h-full">
+    <div className="flex h-full w-full flex-col items-start lg:flex-row">
       {/* Left Section: 3D Model Viewer - 80vh height and 50% of width */}
-      <div className="w-full lg:w-1/2 h-[80vh] border border-gray-500 mt-6">
+      <div className="mb-28  mt-28 h-[80vh] w-full border border-gray-500 lg:ml-2 lg:w-1/2">
         <Canvas className="relative h-full w-full">
           {/* Lighting setup */}
           <ambientLight intensity={0.5} />
@@ -116,29 +121,162 @@ export default function ProductScreen() {
       </div>
 
       {/* Right Section: Product Details */}
-      <div className="w-full lg:w-1/2 mt-20 lg:mt-0 lg:ml-8 p-6 overflow-auto h-[100vh]">
-        <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-        <div className="text-gray-600 mb-4">
-          <span className="font-semibold">Categories:</span>{" "}
-          <span className="text-gray-800">{product.category}</span>
+      <div className="relative mb-48 mt-8 h-[80vh] w-full overflow-auto rounded-xl bg-white p-8 shadow-xl transition-all duration-300 hover:shadow-2xl lg:ml-2 lg:mt-28 lg:w-1/2">
+        {/* Product Title */}
+        <h1 className="mb-6 text-3xl font-extrabold tracking-wider text-gray-900">
+          {product.name}
+        </h1>
+
+        {/* Category */}
+        <div className="mb-4 flex items-center space-x-3 text-gray-600">
+          <span className="text-lg font-semibold">Category:</span>
+          <span className="rounded-full bg-gray-100 px-4 py-2 text-sm text-gray-700 shadow-md">
+            {product.category}
+          </span>
         </div>
-        <p className="text-gray-600 mb-4">{product.description}</p>
-        <p className="text-3xl font-bold text-red-600 mb-6">Rs. {product.price}</p>
 
-        {/* Add to Cart or Update Button */}
-        <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 mb-4">
-          Add to Cart
-        </button>
+        {/* Description */}
+        <p className="mb-4 text-lg leading-relaxed text-gray-600">
+          {product.description}
+        </p>
 
-        {/* Conditionally display the AR button */}
-        {isARSupported && (
-          <button
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-            onClick={() => setViewInAR(true)} // Switch to AR view
-          >
-            View in AR
+        {/* Price */}
+        <p className="mb-4 flex items-center text-2xl font-bold text-red-500">
+          <span className="mr-2 text-3xl">Rs.</span> {product.price}
+        </p>
+
+        {/* Action Buttons */}
+        <div className=" flex gap-4">
+          {/* Add to Cart Button */}
+          <button className="flex w-1/2 transform items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 via-red-500 to-red-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-2xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 3h2l.341 2M7 13h10l1.34-8H5.659L7 13zm0 0l1 9h8l1-9M16 13H8m8 0l1 9H7l1-9M5 4h14M9 4h6"
+              />
+            </svg>
+            Add to Cart
           </button>
-        )}
+
+          {/* Add Reviews Button */}
+          <button className="flex w-1/2 transform items-center justify-center gap-2 rounded-lg border-2 border-orange-500 bg-transparent px-6 py-3 font-semibold text-gray-900 shadow-lg transition hover:scale-105 hover:shadow-2xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 4v16h16V4H4zM7 10h10M7 14h10M7 18h10"
+              />
+            </svg>
+            Add Review
+          </button>
+
+          {/* AR Support Button */}
+          {isARSupported && (
+            <button
+              className="flex w-full transform items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 via-teal-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-2xl"
+              onClick={() => setViewInAR(true)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 4v16h16V4H4zM7 10h10M7 14h10M7 18h10"
+                />
+              </svg>
+              View in AR
+            </button>
+          )}
+        </div>
+
+        {/* Customer Reviews */}
+        <div className="mt-8">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+            Customer Reviews
+          </h2>
+          <div className="space-y-4">
+            {/* Review 1 */}
+            <div className="flex items-start">
+              <img
+                src="/avatars/user1.png"
+                alt="Jane Doe"
+                width={48}
+                height={48}
+                className="mr-4 rounded-full object-cover"
+              />
+              <div>
+                <h3 className="text-lg font-medium text-gray-700">Jane Doe</h3>
+                <div className="mb-2 flex items-center">
+                  {/* Star Rating */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-yellow-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.978c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.978a1 1 0 00-.364-1.118L2.362 9.405c-.783-.57-.38-1.81.588-1.81h4.163a1 1 0 00.95-.69l1.286-3.978z" />
+                  </svg>
+                  <span className="ml-2 text-gray-600">4.5</span>
+                </div>
+                <p className="text-gray-600">
+                  Amazing product! Highly recommend to everyone.
+                </p>
+              </div>
+            </div>
+            {/* Review 2 */}
+            <div className="flex items-start">
+              <img
+                src="/avatars/user2.png"
+                alt="John Smith"
+                width={48}
+                height={48}
+                className="mr-4 rounded-full object-cover"
+              />
+              <div>
+                <h3 className="text-lg font-medium text-gray-700">
+                  John Smith
+                </h3>
+                <div className="mb-2 flex items-center">
+                  {/* Star Rating */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 text-yellow-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.978c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.978a1 1 0 00-.364-1.118L2.362 9.405c-.783-.57-.38-1.81.588-1.81h4.163a1 1 0 00.95-.69l1.286-3.978z" />
+                  </svg>
+                  <span className="ml-2 text-gray-600">5.0</span>
+                </div>
+                <p className="text-gray-600">
+                  Exceeded my expectations. Great quality and design.
+                </p>
+              </div>
+            </div>
+            {/* Add more reviews as needed */}
+          </div>
+        </div>
       </div>
     </div>
   );
